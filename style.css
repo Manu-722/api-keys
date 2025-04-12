@@ -1,0 +1,38 @@
+body {
+    background-color: aliceblue;
+}
+.header {
+    color: aqua;
+    font-size: 1500px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    margin-top: 50px;
+}
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(145, 140, 140, 0.3);
+}
+h1 {
+    font-size: 20px;
+}
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+}
+button {
+    background-color: #9DFF00;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.weather {
+    margin-top: 20px;
+}
