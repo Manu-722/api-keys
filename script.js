@@ -13,24 +13,35 @@ searchButton.addEventListener("click", () => {
     fetchWeather(location);
   }
 });
+
+
 // Function to fetch and display weather
 function fetchWeather(location) {
   const url = `${apiUrl}?q=${location}&appid=${apiKey}&units=metric`;
   fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      // Update the webpage with weather information
-      locationElement.textContent = `${data.name}, ${data.sys.country}`;
-      temperatureElement.textContent = `Temperature: ${Math.round(data.main.temp)}°C`;
-      descriptionElement.textContent = `Weather: ${data.weather[0].description}`;
-    })
-    .catch(error => {
-      // Handle errors
-      locationElement.textContent = "Error fetching weather data";
-      temperatureElement.textContent = "";
-      descriptionElement.textContent = "";
-      console.error("Error:", error);
-    });
+      .then(response => response.json())
+      .then(data => {
+          // Update the webpage with weather information
+          locationElement.textContent = `${data.name}, ${data.sys.country}`;
+          temperatureElement.textContent = `Temperature: ${Math.round(data.main.temp)}°C`;
+          descriptionElement.textContent = `Weather: ${data.weather[0].description}`;
+          
+          // Add weather icons
+          const iconCode = data.weather[0].icon; // Get the weather icon code
+          const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
+          const iconElement = document.createElement("img");
+          iconElement.src = iconUrl;
+          iconElement.alt = data.weather[0].description;
+          iconElement.style.width = "100px"; // Style the icon
+          descriptionElement.appendChild(iconElement); // Append icon
+      })
+      .catch(error => {
+          locationElement.textContent = "Error fetching weather data";
+          temperatureElement.textContent = "";
+          descriptionElement.textContent = "";
+          console.error("Error:", error);
+      });
 }
-// Optional: Load a default city on page load
-fetchWeather("Nairobi");
+
+
+ 
